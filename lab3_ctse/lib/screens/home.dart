@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lab3_ctse/components/item_tile.dart';
+import 'package:lab3_ctse/data.dart';
 import 'package:lab3_ctse/screens/cart.dart';
 
 class Home extends StatelessWidget {
@@ -11,7 +13,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("My Store"),
+        title: Text("My Stor"),
         actions: [
           IconButton(
             onPressed: () {
@@ -22,6 +24,17 @@ class Home extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: storeItems.length,
+            itemBuilder: (context, index) {
+              return ItemTile(item: storeItems.elementAt(index));
+            }),
       ),
     );
   }
